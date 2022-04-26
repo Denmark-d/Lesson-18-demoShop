@@ -1,7 +1,9 @@
 package tests;
 
+import Listeners.CustomerAllureListener;
 import org.junit.jupiter.api.Test;
 
+import static Listeners.CustomerAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
@@ -9,6 +11,7 @@ public class demoShopTestsHW {
     @Test
     void addToCartWithoutHDD(){
         given()
+                .filter(withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                 .body("product_attribute_16_5_4=14&" +
                         "product_attribute_16_6_5=15" +
@@ -28,6 +31,7 @@ public class demoShopTestsHW {
     @Test
     void addToCartWithHDD(){
         given()
+                .filter(withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                 .body("product_attribute_16_5_4=14&" +
                         "product_attribute_16_6_5=15&" +
@@ -48,6 +52,7 @@ public class demoShopTestsHW {
     @Test
     void subscribeNewsLetter() {
         given()
+                .filter(withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                 .body("email=")
                 .when()
@@ -62,6 +67,7 @@ public class demoShopTestsHW {
     @Test
     void addToWishes() {
         given()
+                .filter(withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded; charset=UTF-8")
                 .body("product_attribute_5_7_1=1&addtocart_5.EnteredQuantity=1")
                 .when()
